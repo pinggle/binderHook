@@ -7,6 +7,33 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Map;
 
+/***********************************************************************************
+
+ Android23 ServiceManager.java:
+ -----------------------------------------------------------------------------------
+ package android.os;
+ public final class ServiceManager {
+    private static HashMap<String, IBinder> sCache = new HashMap<String, IBinder>();
+    // Returns a reference to a service with the given name.
+    public static IBinder getService(String name) {
+        try {
+            IBinder service = sCache.get(name);
+            if (service != null) {
+                return service;
+            } else {
+                return getIServiceManager().getService(name);
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "error in getService", e);
+        }
+        return null;
+    }
+ }
+ -----------------------------------------------------------------------------------
+
+ ***********************************************************************************/
+
+
 /**
  * @author weishu
  * @date 16/2/15

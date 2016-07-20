@@ -38,6 +38,7 @@ public class BinderHookHandler implements InvocationHandler {
         if ("getPrimaryClip".equals(method.getName())) {
             Log.d(TAG, "hook getPrimaryClip");
             return ClipData.newPlainText(null, "you are hooked");
+            //method.invoke(base, args);
         }
 
         // 欺骗系统,使之认为剪切版上一直有内容
